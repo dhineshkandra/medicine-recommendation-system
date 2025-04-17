@@ -1,0 +1,86 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medicine Recommendation System</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>AI Medicine Recommendation System</h1>
+      <p>Enter your symptoms to get personalized medicine recommendations</p>
+    </header>
+    
+    <main>
+      <section class="symptom-input">
+        <h2>Enter Your Symptoms</h2>
+        <form id="symptomForm">
+          <div class="form-group">
+            <label for="symptoms">Symptoms:</label>
+            <textarea 
+              id="symptoms" 
+              name="symptoms" 
+              placeholder="Example: headache, fever, chills, body ache"
+              rows="4" 
+              required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <h3>Current Medications (Optional)</h3>
+            <p>Enter any medications you're currently taking</p>
+            <div id="medicationInputs">
+              <div class="medication-input">
+                <input type="text" class="medication" placeholder="Enter medication name">
+                <button type="button" class="remove-btn" disabled><i class="fas fa-times"></i></button>
+              </div>
+            </div>
+            <button type="button" id="addMedicationBtn">Add Another Medication</button>
+          </div>
+          
+          <button type="submit" id="submitBtn">Get Recommendations</button>
+        </form>
+      </section>
+      
+      <section class="results" id="results" style="display: none;">
+        <h2>Analysis Results</h2>
+        
+        <div class="loader" id="loader">
+          <div class="spinner"></div>
+          <p>Analyzing symptoms...</p>
+        </div>
+        
+        <div class="result-content" id="resultContent" style="display: none;">
+          <div class="disease-prediction">
+            <h3>Predicted Condition</h3>
+            <p id="predictedDisease"></p>
+          </div>
+          
+          <div class="drug-recommendations">
+            <h3>Recommended Medications</h3>
+            <div id="recommendationsList"></div>
+          </div>
+          
+          <div class="warning" id="warningBox" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p id="warningText"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <footer>
+      <p>This system is for informational purposes only. Always consult with a healthcare professional before taking any medication.</p>
+    </footer>
+  </div>
+  
+  <!-- Firebase SDKs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.6.10/firebase-app-compat.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.6.10/firebase-functions-compat.min.js"></script>
+  
+  <script src="js/app.js"></script>
+</body>
+</html>
